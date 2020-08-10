@@ -1,6 +1,11 @@
 FROM debian:buster
 RUN apt-get update && apt-get upgrade && apt-get install -y nginx
-RUN service nginx restart
-RUN apt-get install openssl
+RUN apt-get install openssl -y
+COPY srcs/nginx_conf /etc/nginx/sites-available/
+RUN ln -s /etc/nginx/sites-available/site /etc/nginx/sites-enabled/site
+RUN rm -rf /etc/nginx/sites-enabled/default
 RUN mkdir /etc/nginx/ssl
-RUN openssl req -newkey rsa:4096 -x509 -sha256 -days 3650 -nodes -out /etc/nginx/sll/site.crt -keyout /etc/nginx/sll/site.key -subj "/C=FR/ST=75/L=Paris/O=42/CN=jfoucher"
+RUN openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out /etc/nginx/ssl/monsupersite.pem -keyout /etc/nginx/ssl/monsupersite.key -subj "/C=FR/ST=75/L=Paris/O=42/OU=jfoucher/CN=site"
+
+CMD service nginx restart
+CMD bash
