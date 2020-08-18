@@ -4,7 +4,8 @@ mysql -u root -e "GRANT SELECT, INSERT, UPDATE, DELETE ON phpmyadmin.* TO 'pma'@
 mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'jfoucher'@'localhost' IDENTIFIED BY 'password' WITH GRANT OPTION;"
 mysql -u root -e "FLUSH PRIVILEGES;"
 service php7.3-fpm start
-mysql -u root -e "CREATE DATABASE app_db;
-GRANT ALL PRIVILEGES ON app_db.* TO 'app_user'@'localhost' IDENTIFIED BY 'password';
+mysql -u root -e "CREATE DATABASE wordpress;
+GRANT ALL PRIVILEGES ON wordpress.* TO 'jfoucher'@'localhost' IDENTIFIED BY 'password';
 FLUSH PRIVILEGES;"
 nginx -g 'daemon off;'
+bash

@@ -20,10 +20,8 @@ RUN mkdir /etc/nginx/ssl
 RUN openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out /etc/nginx/ssl/site.pem -keyout /etc/nginx/ssl/site.key -subj "/C=FR/ST=75/L=Paris/O=42/OU=jfoucher/CN=site"
 RUN wget -c https://wordpress.org/latest.tar.gz
 RUN tar -xvzf latest.tar.gz
-COPY wordpress/ /var/www/html/
-RUN chown -R www-data:www-data /var/www/html/wordpress/
-RUN chmod 755 -R /var/www/html/wordpress/
-COPY srcs/wordpress.conf var/www/site/wordpress
+RUN mv wordpress/ /var/www/site
+COPY srcs/wp-config.php /var/www/site/wordpress/
 COPY srcs/start.sh .
 COPY srcs/test.php var/www/site
 CMD bash start.sh 

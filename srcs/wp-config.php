@@ -1,5 +1,5 @@
 <?php
- /**
+/**
  * The base configuration for WordPress
  *
  * The wp-config.php creation script uses this file during the
@@ -13,7 +13,7 @@
  * * Database table prefix
  * * ABSPATH
  *
- * @link https://codex.wordpress.org/Editing_wp-config.php
+ * @link https://wordpress.org/support/article/editing-wp-config-php/
  *
  * @package WordPress
  */
@@ -23,16 +23,16 @@
 define( 'DB_NAME', 'wordpress' );
 
 /** MySQL database username */
-define( 'DB_USER', 'root' );
+define( 'DB_USER', 'jfoucher' );
 
 /** MySQL database password */
-define( 'DB_PASSWORD', '' );
+define( 'DB_PASSWORD', 'password' );
 
 /** MySQL hostname */
 define( 'DB_HOST', 'localhost' );
 
 /** Database Charset to use in creating database tables. */
-define( 'DB_CHARSET', 'utf8' );
+define( 'DB_CHARSET', 'utf8mb4' );
 
 /** The Database Collate type. Don't change this if in doubt. */
 define( 'DB_COLLATE', '' );
@@ -46,14 +46,14 @@ define( 'DB_COLLATE', '' );
  *
  * @since 2.6.0
  */
-define( 'AUTH_KEY',         'put your unique phrase here' );
-define( 'SECURE_AUTH_KEY',  'put your unique phrase here' );
-define( 'LOGGED_IN_KEY',    'put your unique phrase here' );
-define( 'NONCE_KEY',        'put your unique phrase here' );
-define( 'AUTH_SALT',        'put your unique phrase here' );
-define( 'SECURE_AUTH_SALT', 'put your unique phrase here' );
-define( 'LOGGED_IN_SALT',   'put your unique phrase here' );
-define( 'NONCE_SALT',       'put your unique phrase here' );
+define( 'AUTH_KEY',         'ZP5_nDaZq:|5yD*y:|K)hIyZX~5Zo[HJj#,CjGE^@doK]C%/oO 72Brwwf~).uEl' );
+define( 'SECURE_AUTH_KEY',  ',n{yz*h*9#sh0/cl[>a|PCLiVMj:jt:tWq=VM}say.fPKN;,fX<;2-&(u=:?5q6V' );
+define( 'LOGGED_IN_KEY',    'z!eF(|7C8qe`_tNxvBOO(xQs+nI-6mGhp)V/=%dfv{o&Ib90Byf 4aT5c|Hajdiz' );
+define( 'NONCE_KEY',        'Gsyd&l8GaJ|f4ChGUwsS2*0txY)9IU(/,([,M:;9hgWm_>?5J d1kgl&*E[J^D9^' );
+define( 'AUTH_SALT',        ']Z4`2Y@<pJYw&PYZ,e4[$/>cIOdMO)cd`tr1 ElO,?(_.{/[=>Pf[M9Wh:?*,+ti' );
+define( 'SECURE_AUTH_SALT', '&kd}Z%WT,XT_<(q{^]f;7%hk,Wb ..Tb$>6oXHQ?N<~egFQOJJ{=cYBWCE*PUwT%' );
+define( 'LOGGED_IN_SALT',   '[xl`c2,v%8H]B# g*nZ60Z UK6q^gl,8OMNX/*`D@bid~v/l77qnM[vwcY;0*6>v' );
+define( 'NONCE_SALT',       'gL$R|LKm]-~=G3g|f@sFjkaJ<Hms4fDp0FSj@0Z/m~W57+-a:^Xu4Rj 4q|1)F3J' );
 
 /**#@-*/
 
@@ -73,9 +73,9 @@ $table_prefix = 'wp_';
  * in their development environments.
  *
  * For information on other constants that can be used for debugging,
- * visit the Codex.
+ * visit the documentation.
  *
- * @link https://codex.wordpress.org/Debugging_in_WordPress
+ * @link https://wordpress.org/support/article/debugging-in-wordpress/
  */
 define( 'WP_DEBUG', false );
 
@@ -83,8 +83,9 @@ define( 'WP_DEBUG', false );
 
 /** Absolute path to the WordPress directory. */
 if ( ! defined( 'ABSPATH' ) ) {
-	define( 'ABSPATH', dirname( __FILE__ ) . '/' );
+	define( 'ABSPATH', __DIR__ . '/' );
 }
 
 /** Sets up WordPress vars and included files. */
-require_once( ABSPATH . 'wp-settings.php' );
+require_once ABSPATH . 'wp-settings.php';
+
