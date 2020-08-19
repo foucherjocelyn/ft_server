@@ -5,15 +5,16 @@ RUN apt-get install php7.3-fpm php7.3-mysql -y
 RUN apt-get install php-mbstring php-zip php-gd -y php-json
 RUN apt-get install openssl -y
 RUN apt-get install mariadb-server -y
-RUN wget https://files.phpmyadmin.net/phpMyAdmin/5.0.2/phpMyAdmin-5.0.2-all-languages.tar.gz
-RUN tar xvf phpMyAdmin-5.0.2-all-languages.tar.gz
-RUN mv phpMyAdmin-5.0.2-all-languages/ /usr/share/phpmyadmin
+COPY srcs/wordpress.sql ./root/
 RUN mkdir -p /var/lib/phpmyadmin/tmp
 RUN chown -R www-data:www-data /var/lib/phpmyadmin
-COPY srcs/config.inc.php /usr/share/phpmyadmin/config.inc.php
 RUN mkdir /var/www/site
 COPY srcs/nginx_conf /etc/nginx/sites-available/site
 COPY srcs/info.php /var/www/site
+RUN mkdir var/www/site/phpmyadmin
+RUN wget https://files.phpmyadmin.net/phpMyAdmin/5.0.2/phpMyAdmin-5.0.2-all-languages.tar.gz
+RUN tar xvf phpMyAdmin-5.0.2-all-languages.tar.gz --strip-components 1 -C /var/www/site/phpmyadmin
+COPY srcs/config.inc.php www/site/phpmyadmin
 RUN ln -s /etc/nginx/sites-available/site /etc/nginx/sites-enabled/site
 RUN rm -rf /etc/nginx/sites-enabled/default
 RUN mkdir /etc/nginx/ssl
