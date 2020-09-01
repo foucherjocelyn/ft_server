@@ -7,5 +7,5 @@ mysql -u root -e "CREATE DATABASE wordpress;
 GRANT ALL PRIVILEGES ON wordpress.* TO 'jfoucher'@'localhost' IDENTIFIED BY 'password';
 FLUSH PRIVILEGES;"
 mysql wordpress -u root < /root/wordpress.sql
-nginx -g 'daemon off;'
+service nginx restart
 bash

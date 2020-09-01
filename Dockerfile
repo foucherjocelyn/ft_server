@@ -10,7 +10,6 @@ RUN mkdir -p /var/lib/phpmyadmin/tmp
 RUN chown -R www-data:www-data /var/lib/phpmyadmin
 RUN mkdir /var/www/site
 COPY srcs/nginx_conf /etc/nginx/sites-available/site
-COPY srcs/info.php /var/www/site
 RUN mkdir var/www/site/phpmyadmin
 RUN wget https://files.phpmyadmin.net/phpMyAdmin/5.0.2/phpMyAdmin-5.0.2-all-languages.tar.gz
 RUN tar xvf phpMyAdmin-5.0.2-all-languages.tar.gz --strip-components 1 -C /var/www/site/phpmyadmin
@@ -24,5 +23,6 @@ RUN tar -xvzf latest.tar.gz
 RUN mv wordpress/ /var/www/site
 COPY srcs/wp-config.php /var/www/site/wordpress/
 COPY srcs/start.sh .
-COPY srcs/test.php var/www/site
+RUN rm phpMyAdmin-5.0.2-all-languages.tar.gz
+RUN rm latest.tar.gz
 CMD bash start.sh 
