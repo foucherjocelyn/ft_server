@@ -1,3 +1,9 @@
+if [ "$AUTOINDEX" = "0" ]
+then
+	mv /nginx_confoff /etc/nginx/sites-available/site
+else
+	mv /nginx_confon /etc/nginx/sites-available/site
+fi
 service mysql start
 mysql -u root -e "GRANT SELECT, INSERT, UPDATE, DELETE ON phpmyadmin.* TO 'pma'@'localhost' IDENTIFIED BY 'password';"
 mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'jfoucher'@'localhost' IDENTIFIED BY 'password' WITH GRANT OPTION;"
